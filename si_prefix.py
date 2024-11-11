@@ -100,7 +100,7 @@ def _split(value: float, precision: int = 1) -> tuple[float, int]:
 
     See Also
     --------
-    si_format : for more examples.
+    with_format : for more examples.
 
     """
     negative = False
@@ -161,7 +161,7 @@ def _prefix(exp_of_10: int) -> str:
     raise ValueError(msg)
 
 
-def si_format(
+def with_format(
     value: float,
     precision: int = 1,
     format_str: str = "{value} {prefix}",
@@ -193,121 +193,121 @@ def si_format(
 
     Examples
     --------
-    >>> si_format(0.04781, 2)
+    >>> with_format(0.04781, 2)
     '47.81 m'
 
-    >>> si_format(4781.123, 2)
+    >>> with_format(4781.123, 2)
     '4.78 k'
 
-    >>> si_format(0.04781, 3)
+    >>> with_format(0.04781, 3)
     '47.810 m'
 
-    >>> si_format(4781.123, 3)
+    >>> with_format(4781.123, 3)
     '4.781 k'
 
-    >>> si_format(1e-27)
+    >>> with_format(1e-27)
     '1.0e-27'
 
-    >>> si_format(1.764e-24)
+    >>> with_format(1.764e-24)
     '1.8 y'
 
-    >>> si_format(7.4088e-23, 2)
+    >>> with_format(7.4088e-23, 2)
     '74.09 y'
 
-    >>> si_format(3.1117e-21, 2)
+    >>> with_format(3.1117e-21, 2)
     '3.11 z'
 
-    >>> si_format(1.30691e-19, 2)
+    >>> with_format(1.30691e-19, 2)
     '130.69 z'
 
-    >>> si_format(5.48903e-18, 2)
+    >>> with_format(5.48903e-18, 2)
     '5.49 a'
 
-    >>> si_format(2.30539e-16, 2)
+    >>> with_format(2.30539e-16, 2)
     '230.54 a'
 
-    >>> si_format(9.68265e-15, 2)
+    >>> with_format(9.68265e-15, 2)
     '9.68 f'
 
-    >>> si_format(4.06671e-13, 2)
+    >>> with_format(4.06671e-13, 2)
     '406.67 f'
 
-    >>> si_format(1.70802e-11, 2)
+    >>> with_format(1.70802e-11, 2)
     '17.08 p'
 
-    >>> si_format(7.17368e-10, 2)
+    >>> with_format(7.17368e-10, 2)
     '717.37 p'
 
-    >>> si_format(3.01295e-08, 2)
+    >>> with_format(3.01295e-08, 2)
     '30.13 n'
 
-    >>> si_format(1.26544e-06, 2)
+    >>> with_format(1.26544e-06, 2)
     '1.27 µ'
 
-    >>> si_format(5.31484e-05, 2)
+    >>> with_format(5.31484e-05, 2)
     '53.15 µ'
 
-    >>> si_format(0.00223223, 2)
+    >>> with_format(0.00223223, 2)
     '2.23 m'
 
-    >>> si_format(0.0937537, 2)
+    >>> with_format(0.0937537, 2)
     '93.75 m'
 
-    >>> si_format(3.93766, 2)
+    >>> with_format(3.93766, 2)
     '3.94'
 
-    >>> si_format(165.382, 2)
+    >>> with_format(165.382, 2)
     '165.38'
 
-    >>> si_format(6946.03, 2)
+    >>> with_format(6946.03, 2)
     '6.95 k'
 
-    >>> si_format(291733, 2)
+    >>> with_format(291733, 2)
     '291.73 k'
 
-    >>> si_format(1.22528e+07, 2)
+    >>> with_format(1.22528e+07, 2)
     '12.25 M'
 
-    >>> si_format(5.14617e+08, 2)
+    >>> with_format(5.14617e+08, 2)
     '514.62 M'
 
-    >>> si_format(2.16139e+10, 2)
+    >>> with_format(2.16139e+10, 2)
     '21.61 G'
 
-    >>> si_format(9.07785e+11, 2)
+    >>> with_format(9.07785e+11, 2)
     '907.79 G'
 
-    >>> si_format(3.8127e+13, 2)
+    >>> with_format(3.8127e+13, 2)
     '38.13 T'
 
-    >>> si_format(1.60133e+15, 2)
+    >>> with_format(1.60133e+15, 2)
     '1.60 P'
 
-    >>> si_format(6.7256e+16, 2)
+    >>> with_format(6.7256e+16, 2)
     '67.26 P'
 
-    >>> si_format(2.82475e+18, 2)
+    >>> with_format(2.82475e+18, 2)
     '2.82 E'
 
-    >>> si_format(1.1864e+20, 2)
+    >>> with_format(1.1864e+20, 2)
     '118.64 E'
 
-    >>> si_format(4.98286e+21, 2)
+    >>> with_format(4.98286e+21, 2)
     '4.98 Z'
 
-    >>> si_format(2.0928e+23, 2)
+    >>> with_format(2.0928e+23, 2)
     '209.28 Z'
 
-    >>> si_format(8.78977e+24, 2)
+    >>> with_format(8.78977e+24, 2)
     '8.79 Y'
 
-    >>> si_format(3.6917e+26, 2)
+    >>> with_format(3.6917e+26, 2)
     '369.17 Y'
 
-    >>> si_format(1.55051e+28, 2)
+    >>> with_format(1.55051e+28, 2)
     '15.51e+27'
 
-    >>> si_format(6.51216e+29, 2)
+    >>> with_format(6.51216e+29, 2)
     '651.22e+27'
 
     """
@@ -328,13 +328,13 @@ def si_format(
         )
 
 
-def si_parse(value: str) -> float:
+def parse(value: str) -> float:
     """Parse a value expressed using SI prefix units to a floating point number.
 
     Parameters
     ----------
     value : str or unicode
-        Value expressed using SI prefix units (as returned by :func:`si_format`
+        Value expressed using SI prefix units (as returned by :func:`with_format`
         function).
 
     Returns
@@ -344,11 +344,11 @@ def si_parse(value: str) -> float:
 
     Examples
     --------
-    >>> round(si_parse("47.8 m"),4)
+    >>> round(parse("47.8 m"),4)
     0.0478
-    >>> si_parse("4.78 k")
+    >>> parse("4.78 k")
     4780.0
-    >>> si_parse("1.0e-27")
+    >>> parse("1.0e-27")
     1e-27
 
     """
