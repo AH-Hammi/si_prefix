@@ -314,8 +314,7 @@ def with_format(
 
     """
     scale_value, exp_of_10 = _split(value, precision)
-    value_format = "%%.%df" % precision
-    value_str = value_format % scale_value
+    value_str = f"{scale_value:.{precision}f}"
     try:
         return format_str.format(value=value_str, prefix=_prefix(exp_of_10).strip())
     except ValueError:
