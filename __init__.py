@@ -45,6 +45,7 @@ SI_PREFIXES = [
     _SiPrefix("n", "nano", -9),
     _SiPrefix("µ", "micro", -6),
     _SiPrefix("m", "milli", -3),
+    _SiPrefix("", "", 0),
     _SiPrefix("k", "kilo", 3),
     _SiPrefix("M", "mega", 6),
     _SiPrefix("G", "giga", 9),
