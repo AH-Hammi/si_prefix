@@ -11,6 +11,18 @@ repos:
     rev: v3.19.1
     hooks:
       - id: pyupgrade
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.11.7
+    hooks:
+      # Run the linter.
+      - id: ruff
+        exclude_types:
+          - pyi
+      # Run the formatter.
+      - id: ruff-format
+        exclude_types:
+          - pyi
   - repo: local
     hooks:
       - id: stubgen
@@ -21,13 +33,3 @@ repos:
           - -o=.
         pass_filenames: false
         language: system
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version.
-    rev: v0.11.7
-    hooks:
-      # Run the linter.
-      - id: ruff
-        args:
-          - --fix
-      # Run the formatter.
-      - id: ruff-format
