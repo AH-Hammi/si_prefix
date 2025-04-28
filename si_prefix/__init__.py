@@ -36,7 +36,7 @@ class _SiPrefix:
         return f"e{self.exponent}"
 
 
-SI_PREFIXES = [
+SI_PREFIXES: list[_SiPrefix] = [
     _SiPrefix("y", "yocto", -24),
     _SiPrefix("z", "zepto", -21),
     _SiPrefix("a", "atto", -18),
