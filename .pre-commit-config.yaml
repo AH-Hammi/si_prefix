@@ -17,19 +17,5 @@ repos:
     hooks:
       # Run the linter.
       - id: ruff
-        exclude_types:
-          - pyi
       # Run the formatter.
       - id: ruff-format
-        exclude_types:
-          - pyi
-  - repo: local
-    hooks:
-      - id: stubgen
-        name: Generate Stub files for the module
-        entry: poetry run stubgen
-        args:
-          - -m=si_prefix
-          - -o=.
-        pass_filenames: false
-        language: system
