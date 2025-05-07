@@ -5,7 +5,10 @@ description = ""
 authors = [{ name = "Alexander Hammans", email = "a.hammans@kostal.com" }]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["matplotlib (>=3.10.1,<4.0.0)"]
+dependencies = []
+
+[project.optional-dependencies]
+matplotlib_formatter = ["matplotlib (>=3.10.1,<4.0.0)"]
 
 [tool.poetry]
 
