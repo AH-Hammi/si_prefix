@@ -165,9 +165,10 @@ def _prefix(exp_of_10: int) -> str:
 def with_format(
     value: float,
     precision: int = 1,
+    unit: str = "",
+    *,
     format_str: str = "{value} {prefix}{unit}",
     exp_format_str: str = "{value}e{exp_of_10}",
-    unit: str = "",
 ) -> str:
     """Return SI Formatted number string.
 
@@ -259,10 +260,10 @@ def with_format(
     '93.75 m'
 
     >>> with_format(3.93766, 2)
-    '3.94'
+    '3.94 '
 
     >>> with_format(165.382, 2)
-    '165.38'
+    '165.38 '
 
     >>> with_format(6946.03, 2)
     '6.95 k'
@@ -315,7 +316,10 @@ def with_format(
     >>> with_format(6.51216e+29, 2)
     '651.22e+27'
 
-    >>> with_format(0.04781, 2, "Hz")
+    >>> with_format(0.04781, 2, format_str="{value} {prefix}Hz")
+    '47.81 mHz'
+
+    >>> with_format(0.04781, 2, unit="Hz")
     '47.81 mHz'
 
     """
@@ -329,9 +333,7 @@ def with_format(
         )
     except ValueError:
         sign = ""
-        if exp_of_10 == 0:
-            return value_str
-        if exp_of_10 > 0:
+        if exp_of_10 >= 0:
             sign = "+"
         return exp_format_str.format(
             value=value_str,
@@ -355,10 +357,15 @@ def parse(value: str) -> float:
 
     Examples
     --------
+    >>> round(parse("47.8"),4)
+    47.8
+
     >>> round(parse("47.8 m"),4)
     0.0478
+
     >>> parse("4.78 k")
     4780.0
+
     >>> parse("1.0e-27")
     1e-27
 
@@ -367,5 +374,7 @@ def parse(value: str) -> float:
     value = value.replace(" ", "")
     # replace the SI unit with a eX where X is the exponent of 10.
     for si_prefix in SI_PREFIXES:
+        if si_prefix.short_name == "":
+            continue
         value = value.replace(si_prefix.short_name, si_prefix.get_e_string())
     return float(value)
