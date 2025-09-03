@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: python
+    name: Python QA
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +22,12 @@ jobs:
         uses: astral-sh/setup-uv@v6
 
       - name: Install the project
-        run: uv sync --locked --all-extras --dev
+        run: uv sync --locked --all-extras --all-groups
       # Update output format to enable automatic inline annotations.
       - name: Ruff Lint
         run: uv run ruff check --output-format=github .
       - name: Basedpyright Type Checking
         run: uv run basedpyright
+      
+      - name: Pytest Docstring Tests
+        run: uv run pytest --doctest-modules --doctest-report=ndiff
