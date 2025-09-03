@@ -30,7 +30,7 @@ jobs:
         run: uv run basedpyright
       
       - name: Pytest Docstring Tests
-        run: uv run pytest --doctest-modules --doctest-report=ndiff --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=src tests/ | tee pytest-coverage.txt
+        run: uv run pytest --doctest-modules --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=src tests/ | tee pytest-coverage.txt
       - name: Coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
