@@ -165,8 +165,9 @@ def _prefix(exp_of_10: int) -> str:
 def with_format(
     value: float,
     precision: int = 1,
-    format_str: str = "{value} {prefix}",
+    format_str: str = "{value} {prefix}{unit}",
     exp_format_str: str = "{value}e{exp_of_10}",
+    unit: str = "",
 ) -> str:
     """Return SI Formatted number string.
 
@@ -182,11 +183,14 @@ def with_format(
         Format string where ``{prefix}`` and ``{value}`` represent the SI
         prefix and the value (scaled according to the prefix), respectively.
         The default format matches the `SI prefix style` format.
+        Furthermore you can add the ``{unit}`` placeholder to include a unit suffix.
     exp_format_str : str or unicode
         Format string where ``{exp_of_10}`` and ``{value}`` represent the
         exponent of 10 and the value (scaled according to the exponent of 10),
         respectively.  This format is used if the absolute exponent of 10 value
         is greater than 24.
+    unit : str
+        Unit suffix to include in the formatted output.
 
     Returns
     -------
@@ -311,11 +315,18 @@ def with_format(
     >>> with_format(6.51216e+29, 2)
     '651.22e+27'
 
+    >>> with_format(0.04781, 2, "Hz")
+    '47.81 mHz'
+
     """
     scale_value, exp_of_10 = _split(value, precision)
     value_str = f"{scale_value:.{precision}f}"
     try:
-        return format_str.format(value=value_str, prefix=_prefix(exp_of_10).strip())
+        return format_str.format(
+            value=value_str,
+            prefix=_prefix(exp_of_10).strip(),
+            unit=unit,
+        )
     except ValueError:
         sign = ""
         if exp_of_10 == 0:
