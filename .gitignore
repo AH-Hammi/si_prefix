@@ -3,3 +3,9 @@ __pycache__/
 
 # Ignore distribution files
 dist
+
+# Coverage reports
+.coverage
+
+# ignore test results
+test_results
