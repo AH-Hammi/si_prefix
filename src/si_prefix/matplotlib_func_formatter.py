@@ -6,7 +6,7 @@ from . import with_format
 
 
 def matplotlib_tick_formatter(
-    precision: int = 1,
+    precision: int = 0,
     format_str: str = "{value} {prefix}",
     exp_format_str: str = "{value}e{exp_of_10}",
 ) -> FuncFormatter:
@@ -37,13 +37,14 @@ def matplotlib_tick_formatter(
     >>> import matplotlib.pyplot as plt
     >>> fig = plt.figure()
     >>> ax = fig.add_subplot(1, 1, 1)
+    >>> ax.set_yscale("log")
     >>> ax.yaxis.set_major_formatter(matplotlib_tick_formatter())
     >>> ax.plot([
     ...     1e-21, 1e-18, 1e-15, 1e-12, 1e-9, 1e-6, 1e-3,
-    ...     1, 1e3, 1e6, 1e9, 1e12, 1e15, 1e18, 1e21
+    ...     1, 1e3, 1e6, 1e9, 1e12, 1e15, 1e18, 1e21,
     ... ])
     [<matplotlib.lines.Line2D object at ...>]
-    >>> fig.savefig(".")
+    >>> fig.savefig("test_results/test.png")
 
     """
 
