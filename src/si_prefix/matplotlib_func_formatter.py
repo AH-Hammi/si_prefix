@@ -35,6 +35,8 @@ def matplotlib_tick_formatter(
     --------
     >>> from matplotlib.ticker import FuncFormatter
     >>> import matplotlib.pyplot as plt
+    >>> from pathlib import Path
+    >>> Path("test_results").mkdir(exist_ok=True)
     >>> fig = plt.figure()
     >>> ax = fig.add_subplot(1, 1, 1)
     >>> ax.set_yscale("log")
