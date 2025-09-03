@@ -115,7 +115,7 @@ def _split(value: float, precision: int = 1) -> tuple[float, int]:
     exp_of_10 = int(math.log10(value))
     exp_of_10 = exp_of_10 // 3 * 3 if exp_of_10 > 0 else (-exp_of_10 + 3) // 3 * -3
 
-    value *= float(10 ** (-exp_of_10))  # pyright: ignore[reportAny]
+    value *= 10.0 ** (-exp_of_10)
 
     thousand = 1e3
 
