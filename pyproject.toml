@@ -1,21 +1,21 @@
 [project]
-name = "si-prefix"
-version = "0.1.0"
-description = ""
 authors = [{ name = "Alexander Hammans", email = "a.hammans@kostal.com" }]
+dependencies = []
+description = ""
+name = "si-prefix"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+version = "0.1.0"
 
 [project.optional-dependencies]
 matplotlib_formatter = ["matplotlib (>=3.10.1,<4.0.0)"]
 
-[tool.poetry]
-
-[tool.poetry.group.dev.dependencies]
-mypy = "^1.15.0"
-pre-commit = "^4.2.0"
+[dependency-groups]
+dev = [
+    "basedpyright>=1.31.3",
+    "ruff>=0.12.11",
+]
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+build-backend = "uv_build"
+requires = ["uv_build>=0.8.14,<0.9.0"]
